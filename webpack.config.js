@@ -2,11 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    publicPath: '/',
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
@@ -15,6 +15,9 @@ module.exports = {
     contentBase: './dist',
   },
   plugins: [
+    new CopyPlugin([
+      { from: 'img', to: 'img' },
+    ]),
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
