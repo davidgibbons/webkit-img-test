@@ -5,9 +5,6 @@ import { randomize } from './memory.js';
 import quokka from './quokka.jpg';
 
 function component() {
-  const element = document.getElementById('thing');
-
-  element.src = quokka;
 
   // Lodash, now imported by this script
   // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
@@ -24,6 +21,7 @@ function component() {
 
 $(document).ready(function () {
   var random16 = randomize();
+  $( ".hello" ).append('<img style="height: 100px;width: 100px" src="' + quokka + '" />');
 
   // displayCards(random16);
 });
